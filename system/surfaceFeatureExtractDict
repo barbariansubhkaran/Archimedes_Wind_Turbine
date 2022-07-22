@@ -1,0 +1,40 @@
+FoamFile
+{
+    version         2;
+    format          ascii;
+    class           dictionary;
+    object          surfaceFeaturesDict;
+}
+
+// Exported by SnappyHexMesh GUI add-on for Blender v1.0
+// Source file:
+// Export date: 2022-03-30 06:20:36.743218
+
+
+aturbine.obj
+{
+    extractionMethod extractFromSurface;
+    extractFromSurfaceCoeffs { includedAngle 180; }
+
+}
+
+innerCylinder.obj
+{
+    extractionMethod extractFromSurface;
+    extractFromSurfaceCoeffs { includedAngle 180; }
+
+}
+
+innerCylinderSmall.obj
+{
+    extractionMethod extractFromSurface;
+    extractFromSurfaceCoeffs { includedAngle 180; }
+
+}
+
+outerCylinder.obj
+{
+    extractionMethod extractFromSurface;
+    extractFromSurfaceCoeffs { includedAngle 180; }
+
+}
