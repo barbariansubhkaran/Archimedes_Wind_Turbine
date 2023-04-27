@@ -13,10 +13,19 @@ FoamFile
 }
 // * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
 
-surfaces ("motorBike.obj");
+surfaces (
+  
+  "aturbine.obj"
+  "innerCylinder.obj"
+  "innerCylinderSmall.obj"
+  "outerCylinder.obj"
+  
+  
+
+);
 
 // Identify a feature when angle between faces < includedAngle
-includedAngle       150;
+includedAngle       180;
 
 subsetFeatures
 {
