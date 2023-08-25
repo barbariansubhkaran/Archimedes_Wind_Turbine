@@ -1,0 +1,186 @@
+FoamFile
+{
+    version         2;
+    format          ascii;
+    class           dictionary;
+    object          snappyHexMeshDict;
+}
+
+// Exported by SnappyHexMesh GUI add-on for Blender v1.0
+// Source file:
+// Export date: 2022-03-30 06:20:36.743377
+
+castellatedMesh true;
+snap            true;
+addLayers       false;
+
+geometry
+{
+    aturbine
+    {
+        type triSurfaceMesh;
+        file "aturbine.obj";
+        // Min Bounds = [-7.33173e-02 -6.64577e-02 -7.09169e-02]
+        // Max Bounds = [ 8.11200e-02  8.02717e-02  5.82972e-02]
+        // Area = 1.00125e-01
+    }
+    innerCylinder
+    {
+        type triSurfaceMesh;
+        file "innerCylinder.obj";
+        // Min Bounds = [-1.60000e-01 -1.59684e-01 -6.00000e-01]
+        // Max Bounds = [ 1.60000e-01  1.59684e-01  1.00000e-01]
+        // Area = 8.63680e-01
+    }
+    innerCylinderSmall
+    {
+        type triSurfaceMesh;
+        file "innerCylinderSmall.obj";
+        // Min Bounds = [-1.20000e-01 -1.20000e-01 -8.00000e-02]
+        // Max Bounds = [ 1.20000e-01  1.20000e-01  6.00000e-02]
+        // Area = 1.95822e-01
+    }
+    outerCylinder
+    {
+        type triSurfaceMesh;
+        file "outerCylinder.obj";
+        // Min Bounds = [-3.00000e-01 -2.99408e-01 -8.00000e-01]
+        // Max Bounds = [ 3.00000e-01  2.99408e-01  2.00000e-01]
+        // Area = 2.44771e+00
+    }
+}
+
+castellatedMeshControls
+{
+    maxLocalCells   10000000;
+    maxGlobalCells  20000000;
+    minRefinementCells 10;
+    maxLoadUnbalance 0.1;
+    nCellsBetweenLevels 4;
+    locationInMesh (0.01 -0.5 0.01);
+    allowFreeStandingZoneFaces true;
+    resolveFeatureAngle 30;
+    features
+    (
+        {
+            file "aturbine.eMesh";
+            level 4;
+        }
+
+        {
+            file "innerCylinderSmall.eMesh";
+            level 4;
+        }
+        {
+            file "outerCylinder.eMesh";
+            level 0;
+        }
+
+    );
+    refinementSurfaces
+    {
+        aturbine
+        {
+            level (6 6);
+            patchInfo { type wall; }
+        }
+
+        innerCylinderSmall
+        {
+            level (4 4);
+            faceType    boundary;
+            cellZone    innerCylinderSmall;
+            faceZone    innerCylinderSmall;
+            cellZoneInside  inside;
+        }
+        outerCylinder
+        {
+            level (2 2);
+            patchInfo { type wall; }
+        }
+
+    }
+    refinementRegions
+    {
+    innerCylinder
+    {
+        mode        inside;
+        levels      ((1E15 3));
+    }
+    innerCylinderSmall
+    {
+        mode        inside;
+        levels      ((1E15 4));
+    }
+    }
+}
+
+snapControls
+{
+    nSmoothPatch    5;
+    tolerance       1;
+    nSolveIter      30;
+    nRelaxIter      10;
+    // nFeatureSnapIter 10;
+    // implicitFeatureSnap true;
+    // explicitFeatureSnap true;
+    // multiRegionFeatureSnap true;
+}
+
+addLayersControls
+{
+relativeSizes	true;
+minThickness	0.1;
+firstLayerThickness	0.2;
+expansionRatio	1.25;
+nGrow	0;
+featureAngle	180.0;
+maxFaceThicknessRatio	0.5;
+nSmoothSurfaceNormals	5;
+nSmoothThickness	10;
+minMedialAxisAngle	90.0;
+maxThicknessToMedialRatio	0.5;
+nMedialAxisIter	100;
+nSmoothNormals	3;
+slipFeatureAngle	30.0;
+nRelaxIter	5;
+nBufferCellsNoExtrude	0;
+nLayerIter	50;
+nRelaxedIter	20;
+detectExtrusionIsland	true;
+    layers
+    {
+        aturbine
+        {
+             nSurfaceLayers 5;
+        }
+
+
+    }
+}
+
+meshQualityControls
+{
+    maxNonOrtho     65;
+    maxBoundarySkewness 20;
+    maxInternalSkewness 4;
+    maxConcave      80;
+    minVol          1e-15;
+    minTetQuality   1e-15;
+    minArea         -1;
+    minTwist        0.02;
+    minDeterminant  0.001;
+    minFaceWeight   0.05;
+    minVolRatio     0.01;
+    minTriangleTwist -1;
+    nSmoothScale    4;
+    errorReduction  0.75;
+    relaxed
+    {
+      maxNonOrtho	75.0;
+    }
+}
+
+// writeFlags      ( scalarLevels layerSets layerFields );
+
+mergeTolerance  1e-06;
