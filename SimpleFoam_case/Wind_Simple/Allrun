@@ -6,8 +6,10 @@ surfaceFeatureExtract
 
 snappyHexMesh -overwrite 
 
-decomposePar -force 
+topoSet -dict system/createInletOutletSets.topoSetDict
+
+createPatch -overwrite
+
+decomposePar -force
 
 foamJob -parallel -screen simpleFoam
-
-
