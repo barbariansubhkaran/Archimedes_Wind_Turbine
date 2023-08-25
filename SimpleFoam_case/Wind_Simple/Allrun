@@ -1,1 +1,13 @@
+#!/bin/bash
+
+blockMesh 
+
+surfaceFeatureExtract 
+
+snappyHexMesh -overwrite 
+
+decomposePar -force 
+
+foamJob -parallel -screen simpleFoam
+
 
