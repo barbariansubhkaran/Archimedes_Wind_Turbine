@@ -3,7 +3,7 @@ OpenFOAM case for the analysis of Archimedes wind Turbine
 
 ## Archimedes wind turbine case using OpenFOAM.
 
-Just follow these commands :-
++ Just follow these commands :-
 ```
 blockMesh
 
