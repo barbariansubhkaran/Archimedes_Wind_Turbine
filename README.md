@@ -1,38 +1,39 @@
 # Archimedes_Wind_Turbine
 OpenFOAM case for the analysis of Archimedes wind Turbine
 
-Archimedes wind turbine case using OpenFOAM.
+## Archimedes wind turbine case using OpenFOAM.
 
-Just follow these commands :- 
+Just follow these commands :-
+```
+blockMesh
 
-1.blockMesh
+surfaceFeatureExtract
 
-2.surfaceFeatureExtract
+snappyHexMesh -overwrite
 
-3.snappyHexMesh -overwrite
+topoSet -dict system/createInletOutletSets.topoSetDict
 
-4.topoSet -dict system/createInletOutletSets.topoSetDict
+createPatch -overwrite
 
-5.createPatch -overwrite
+decomposePar -force
 
-6.decomposePar -force
+foamJob -parallel -screen pimpleFoam
+```
 
-7.foamJob -parallel -screen pimpleFoam
++ For SimpleFoam Case :-
 
+```
+blockMesh
 
-+ For SimpleFoam Case :- 
+surfaceFeatureExtract
 
+snappyHexMesh -overwrite
 
-1.blockMesh
+topoSet -dict system/createInletOutletSets.topoSetDict
 
-2.surfaceFeatureExtract
+createPatch -overwrite
 
-3.snappyHexMesh -overwrite
+decomposePar -force
 
-4.topoSet -dict system/createInletOutletSets.topoSetDict
-
-5.createPatch -overwrite
-
-6.decomposePar -force
-
-7.foamJob -parallel -screen simpleFoam
+foamJob -parallel -screen simpleFoam
+```
