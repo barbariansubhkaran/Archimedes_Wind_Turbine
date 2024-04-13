@@ -1,7 +1,7 @@
 # Archimedes_Wind_Turbine
 OpenFOAM case for the analysis of Archimedes wind Turbine
 
-![crab pet](https://imgur.com/a/uTa4jQM)
+![crab pet](https://i.imgur.com/Sr3OiAe.gif)
 
 ## Archimedes wind turbine case using OpenFOAM.
 
